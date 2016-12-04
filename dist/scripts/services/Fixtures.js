@@ -35,15 +35,29 @@
     };
     
     
-    Fixtures.getAlbum /* Is this a method we are creating? */ = function() {
+    Fixtures.getAlbum = function() {
       return albumPicasso;
     };
-    
     return Fixtures;
+    //Why return Fixtures?
   }
 
+    Fixtures.getCollection = function(numberOfAlbums){
+      var albumsArray = [];
+      for (var i = 0; i < numberOfAlbums; i++) {
+        albumsArray.push(angular.copy(albumPicasso));
+      }
+      return albumsArray;
+    }
+  
   angular
     .module('blocJams')
     .factory('Fixtures', Fixtures);
-  //Is this sayin that the factory service is called Fixtures and then calling the Fixtures function?
+  //Is this saying that the factory service is called Fixtures and then calling the Fixtures function?
 })();
+
+
+
+
+
+
