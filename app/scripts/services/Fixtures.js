@@ -1,9 +1,10 @@
 (function() {
   function Fixtures() {
-    var Fixtures /* Why declare a variable that's the same name as the function? */ = {};
+    var Fixtures = {};
+    /* Why declare a variable that's the same name as the function? */
 //If albumPicasso is already an object, why declare Fixtures as an empty object?
-    
-    
+
+
     var albumPicasso = {
       title: 'The Colors',
       artist: 'Pablo Picasso',
@@ -33,14 +34,11 @@
         { title: 'Wrong phone number', duration: '2:15' }
       ]
     };
-    
-    
+
+
     Fixtures.getAlbum = function() {
       return albumPicasso;
     };
-    return Fixtures;
-    //Why return Fixtures?
-  }
 
     Fixtures.getCollection = function(numberOfAlbums){
       var albumsArray = [];
@@ -49,15 +47,12 @@
       }
       return albumsArray;
     }
-  
+
+    return Fixtures;
+  }
+
   angular
     .module('blocJams')
     .factory('Fixtures', Fixtures);
   //Is this saying that the factory service is called Fixtures and then calling the Fixtures function?
 })();
-
-
-
-
-
-
