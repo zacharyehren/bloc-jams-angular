@@ -147,5 +147,3 @@
     .factory('SongPlayer', SongPlayer);
 })();
 
-//Current issues: When you hit next song, it automatically goes to the first track. If on the first track, it replays it the first time you hit the button.
-//If you hit previous on the first track, the track stops playing but the pause icon doesn't switch to play.
