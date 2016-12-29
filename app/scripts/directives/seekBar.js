@@ -34,15 +34,15 @@
         //Is fillstyle a custom method we are creating on the scope? And is the "scope.fillStyle" syntax the way we declare it?
         
         scope.thumbStyle = function() {
-          return {width: percentString()};
+          return {left: percentString()};
         };
-        //Same question for thumbStyle as fillStyle
+        //What does "left" pertain to?
         
         scope.onClickSeekBar = function(event) {
           var percent = calculatePercent(seekBar, event);
           scope.value = percent * scope.max;
         };
-        //Walkthrough this code through line 59
+        //Walk through this code through line 59
       
         
         scope.trackThumb = function() {
