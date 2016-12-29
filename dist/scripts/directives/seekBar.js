@@ -6,6 +6,7 @@
       var offsetXPercent = offsetX / seekBarWidth;
       offsetXPercent = Math.max(0, offsetXPercent);
       offsetXPercent = Math.min(1, offsetXPercent);
+      //Walkthrough this code
       return offsetXPercent;
     };
     
@@ -30,11 +31,19 @@
         scope.fillStyle = function() {
           return {width: percentString()};
         };
+        //Is fillstyle a custom method we are creating on the scope? And is the "scope.fillStyle" syntax the way we declare it?
+        
+        scope.thumbStyle = function() {
+          return {left: percentString()};
+        };
+        //What does "left" pertain to?
         
         scope.onClickSeekBar = function(event) {
           var percent = calculatePercent(seekBar, event);
           scope.value = percent * scope.max;
         };
+        //Walk through this code through line 59
+      
         
         scope.trackThumb = function() {
           $document.bind('mousemove.thumb', function(event){
