@@ -1,5 +1,5 @@
 (function() {
-  function SongPlayer(Fixtures) {
+  function SongPlayer($rootScope, Fixtures) {
     var SongPlayer = {};
   /**
  * @desc Pulls album from Fixtures service
@@ -26,6 +26,12 @@
       currentBuzzObject = new buzz.sound(song.audioUrl, {
         formats: ['mp3'],
         preload: true
+      });
+      
+      currentBuzzObject.bind('timeupdate', function() {
+        $rootScope.$apply(function() {
+          SongPlayer.currentTime = currentBuzzObject.getTime();
+        });
       });
 
       SongPlayer.currentSong = song;
@@ -73,7 +79,11 @@
  * @type {Object}
  */
     SongPlayer.currentSong = null;
-
+  /**
+ * @desc Current playback time (in seconds) of currently playing song
+ * @type {Number}
+ */
+    SongPlayer.currentTime = null;
  /**
  * @function SongPlayer.play
  * @desc Public function - Tests if SongPlayer.currentSong matches the chosen song. If it doesnt, it'll set the newly chosen song and play it. If the current song matches the chosen song, it is assumed that the song was paused and will then play it
@@ -140,10 +150,21 @@
 
     return SongPlayer;
   }
+  
+  /**
+ * @function setCurrentTime
+ * @desc Set current time (in seconds) of currently playing song
+ * @param {Number} time
+ */
+  SongPlayer.setCurrentTime = function(time) {
+    if (currentBuzzObject) {
+      currentBuzzObject.setTime(time);
+    }
+  };
 
 
   angular
     .module('blocJams')
-    .factory('SongPlayer', SongPlayer);
+    .factory('SongPlayer', ['$rootScope', 'Fixtures', SongPlayer]);
 })();
 
