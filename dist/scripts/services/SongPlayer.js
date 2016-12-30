@@ -84,6 +84,14 @@
  * @type {Number}
  */
     SongPlayer.currentTime = null;
+    
+    
+ /**
+ * @desc Active volume number
+ * @type {Number}
+ */
+    SongPlayer.volume = null;
+    
  /**
  * @function SongPlayer.play
  * @desc Public function - Tests if SongPlayer.currentSong matches the chosen song. If it doesnt, it'll set the newly chosen song and play it. If the current song matches the chosen song, it is assumed that the song was paused and will then play it
@@ -162,7 +170,8 @@
     }
   };
 
-
+  SongPlayer.setVolume(SongPlayer.volume);
+  
   angular
     .module('blocJams')
     .factory('SongPlayer', ['$rootScope', 'Fixtures', SongPlayer]);
